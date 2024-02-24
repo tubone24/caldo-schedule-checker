@@ -16,6 +16,8 @@ jobs:
           sudo apt-get install fonts-noto
       - name: npm install
         run: npm install
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
       - name: npm run cypress:run
         run: npm run cypress:run
       - uses: actions/upload-artifact@v3
