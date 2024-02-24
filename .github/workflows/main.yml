@@ -18,9 +18,11 @@ jobs:
         run: npm install
       - name: Cypress run
         uses: cypress-io/github-action@v6
-      - name: npm run cypress:run
-        run: npm run cypress:run
       - uses: actions/upload-artifact@v3
         with:
           name: schedule
           path: ./cypress/snapshots/actual/spec.cy.ts
+      - uses: actions/upload-artifact@v3
+        with:
+          name: video
+          path: ./cypress/videos
