@@ -28,3 +28,4 @@ jobs:
         with:
           name: video
           path: ./cypress/videos
+          retention-days: 1
