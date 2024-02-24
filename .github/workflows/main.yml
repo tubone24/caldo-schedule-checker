@@ -18,6 +18,8 @@ jobs:
         run: npm install
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
       - uses: actions/upload-artifact@v3
         with:
           name: schedule
