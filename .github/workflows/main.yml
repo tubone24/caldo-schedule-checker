@@ -1,5 +1,8 @@
 on:
   workflow_dispatch:
+  schedule:
+    # 日本時間で毎日18時に実行
+    - cron: "0 0 25 * *"
 
 jobs:
   send-slack:
