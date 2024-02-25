@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  webscreenshot:
+  send-slack:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -10,12 +10,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 20.11.0
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: 'v1.40'
       - name: install noto font
         run: |
           sudo apt-get update
           sudo apt-get install fonts-noto
-      - name: npm install
-        run: npm install
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -34,3 +35,8 @@ jobs:
           name: downloads
           path: ./cypress/downloads
           retention-days: 1
+      - name: send slack
+        env:
+            SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+            SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+        run: deno run --allow-net --allow-read sendSlack.ts
