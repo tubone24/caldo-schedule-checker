@@ -39,4 +39,4 @@ jobs:
         env:
             SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
             SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
-        run: deno run --allow-net --allow-read sendSlack.ts
+        run: deno run --allow-net --allow-env --allow-read sendSlack.ts
